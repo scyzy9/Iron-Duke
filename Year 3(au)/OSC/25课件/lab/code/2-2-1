@@ -1,0 +1,14 @@
+#include <unistd.h>
+
+int main(){
+    int status;
+    pid_t pid = fork();
+    if(pid == -1){
+        printf("fork() error.\n");
+    }
+    else if(pid == 0){
+        execl("/bin/ps","ps","l",0);
+        printf("This code should not run.");
+    }
+    return 0;
+}
